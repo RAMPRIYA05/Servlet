@@ -4,9 +4,19 @@ public class FormDetails {
 	String name;
 	String phoneNumber;
 	String emailId;
-	public FormDetails()
-	{
+	int id;
+	public FormDetails() {
 		
+	}
+	public FormDetails(String name, String emailId, String phoneNumber) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -28,7 +38,8 @@ public class FormDetails {
 	}
 	@Override
 	public String toString() {
-		return "FormDetails [name=" + name + ", phoneNumber=" + phoneNumber + ", emailId=" + emailId + "]";
+		return "FormDetails [name=" + name + ", phoneNumber=" + phoneNumber + ", emailId=" + emailId + ", id=" + id
+				+ "]";
 	}
 	
 }
