@@ -33,6 +33,7 @@ public class FormImpl implements FormDAO{
 		prepareStatement.setString(3,formDetails1.getEmailId());
 		prepareStatement.setString(4,formDetails1.getPhoneNumber());
 		int rows=prepareStatement.executeUpdate();
+		System.out.println(rows);
 	}
 
 
@@ -66,12 +67,14 @@ public class FormImpl implements FormDAO{
 		Connection connection=JdbcConnection.getConnection();
 		System.out.println(connection); 
 		String delete="DELETE from details where name=?";
-		System.out.println("Enter name:");
-		String name=sc.nextLine();
+//		System.out.println("Enter name:");
+//		String name=sc.nextLine();
 		PreparedStatement prepareStatement=connection.prepareStatement(delete);
 		prepareStatement.setString(1,formDetails1.getName());
 		int rows=prepareStatement.executeUpdate();
 		System.out.println(rows+"Deleted");
+		
+		
 	}
 
    

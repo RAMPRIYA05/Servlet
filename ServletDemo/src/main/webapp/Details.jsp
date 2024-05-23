@@ -8,13 +8,22 @@
 </head>
 <body>
       <form action="Details">
-      Enter your Name:<input type="text" placeholder="Enter your name" name="name"><br>
-      Enter your Phone Number:<input type="number" placeholder="Enter your Phone Number" name="phoneNumber"><br>
-      Enter your Email Id:<input type="email" placeholder="Enter your Email Id" name="emailId"><br>
-      Enter Password:<input type="password" placeholder="Enter Password" name="password"><br>
+      Name:<input type="text" placeholder="Enter your name" name="name" required><br>
+      Phone Number:<input type="number" placeholder="Enter your Phone Number" name="phoneNumber" required><br>
+      Email Id:<input type="email" placeholder="Enter your Email Id" name="emailId" required><br>
+      Password:<input type="password" placeholder="Enter your Password" name="password" required><br>
+      Address:<input type="text" placeholder="Enter your Address" name="address" required><br>
+      City:<input type="text" placeholder="Enter your City" name="city" required><br>
+      Pin Code:<input type="number" placeholder="Enter your PinCode" name="pinCode" required><br>
+      District:<input type="text" placeholder="Enter your District" name="district" required><br>
+      State:<input type="text" placeholder="Enter your State" name="state" required><br>
+      <label for="gender">Gender:</label><br>
+      <label for="gender"><input type="radio" id="gender" name="gender" required>1.Female</label><br>
+      <label for="gender"><input type="radio" id="gender" name="gender" required>2.Male</label><br>
+      <label for="gender"><input type="radio" id="gender" name="gender" required>3.Other</label><br>
       <input type="submit" name="click">
       
       
       </form>
 </body>
-</html>ss
+</html>

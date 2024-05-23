@@ -71,7 +71,7 @@ public class Form extends HttpServlet {
 	           // TODO Auto-generated catch block
 	           e.printStackTrace();
 	       }
-		retrive(request, response);
+		//retrive(request, response);
 	}
 
 	/**
@@ -79,57 +79,57 @@ public class Form extends HttpServlet {
 	 */
 	
 	
-	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		FormDetails formDetails1=new FormDetails();
-		
-		try {
-			list=formImpl1.readForm(formDetails1);	
-			request.setAttribute("list", list);
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("FormTable.jsp");
-	        dispatcher.forward(request, response);
-			 
-		}
-		catch (ClassNotFoundException | SQLException e) {
-	          
-	           e.printStackTrace();
-	       }
-		//option(request, response);
-		form1.update(request, response);
-	}
-	protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FormDetails formDetails1=new FormDetails();
-		PrintWriter writer=response.getWriter();
-	    String name=request.getParameter("Name");
-	    formDetails1.setName(name);
-	    try {
-	    	formImpl1.deleteForm(formDetails1);
-	    	//PrintWriter writer=response.getWriter();
-	    	writer.println(formDetails1.getName());
-	    }
-	    catch(ClassNotFoundException | SQLException e){
-	    	e.printStackTrace();
-	    }
-	    
-	}
-	protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FormDetails formDetails1=new FormDetails();
-		PrintWriter writer=response.getWriter();
-	    String name=request.getParameter("Name");
-	    formDetails1.setName(name);
-	    String emailId=request.getParameter("EmailId");
-	    formDetails1.setEmailId(emailId);
-	    try {
-	    	formImpl1.updateForm(formDetails1);
-	    	//PrintWriter writer=response.getWriter();
-	    	writer.println(formDetails1.getName());
-	    	writer.println(formDetails1.getEmailId());
-	    }
-	    catch(ClassNotFoundException | SQLException e){
-	    	e.printStackTrace();
-	    }
-	}
+//	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		FormDetails formDetails1=new FormDetails();
+//		
+//		try {
+//			list=formImpl1.readForm(formDetails1);	
+//			request.setAttribute("list", list);
+//	        RequestDispatcher dispatcher = request.getRequestDispatcher("FormTable.jsp");
+//	        dispatcher.forward(request, response);
+//			 
+//		}
+//		catch (ClassNotFoundException | SQLException e) {
+//	          
+//	           e.printStackTrace();
+//	       }
+//		//option(request, response);
+//		form1.update(request, response);
+//	}
+//	protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		FormDetails formDetails1=new FormDetails();
+//		PrintWriter writer=response.getWriter();
+//	    String name=request.getParameter("Name");
+//	    formDetails1.setName(name);
+//	    try {
+//	    	formImpl1.deleteForm(formDetails1);
+//	    	//PrintWriter writer=response.getWriter();
+//	    	writer.println(formDetails1.getName());
+//	    }
+//	    catch(ClassNotFoundException | SQLException e){
+//	    	e.printStackTrace();
+//	    }
+//	    
+//	}
+//	protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		FormDetails formDetails1=new FormDetails();
+//		PrintWriter writer=response.getWriter();
+//	    String name=request.getParameter("Name");
+//	    formDetails1.setName(name);
+//	    String emailId=request.getParameter("EmailId");
+//	    formDetails1.setEmailId(emailId);
+//	    try {
+//	    	formImpl1.updateForm(formDetails1);
+//	    	//PrintWriter writer=response.getWriter();
+//	    	writer.println(formDetails1.getName());
+//	    	writer.println(formDetails1.getEmailId());
+//	    }
+//	    catch(ClassNotFoundException | SQLException e){
+//	    	e.printStackTrace();
+//	    }
+//	}
 	
 //	protected void option(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
