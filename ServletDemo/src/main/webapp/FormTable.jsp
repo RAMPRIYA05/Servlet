@@ -9,27 +9,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table border="1">
+<center><table border="1">
 <thead>
 <tr>
-<td>id</td>
-<td>name</td>
-<td>emailId</td>
-<td>phoneNumber</td>
+<td style="background-color:sienna;">Id</td>
+<td style="background-color:sienna;">Name</td>
+<td style="background-color:sienna;">EmailId</td>
+<td style="background-color:sienna;">PhoneNumber</td>
+<td style="background-color:sienna;">Update</td>
+<td style="background-color:sienna;">Delete</td>
 </tr>
 <% ArrayList<FormDetails> list=(ArrayList<FormDetails>)request.getAttribute("list");
 for(FormDetails obj:list)
 {
 %>
 <tr>
-<th><%=obj.getId() %></th>
-<th><%=obj.getName() %></th>
-<th><%=obj.getEmailId() %></th>
-<th><%=obj.getPhoneNumber() %></th>
+<th style="background-color:khaki;"><%=obj.getId() %></th>
+<th style="background-color:khaki;"><%=obj.getName() %></th>
+<th style="background-color:khaki;"><%=obj.getEmailId() %></th>
+
+<th style="background-color:khaki;"><%=obj.getPhoneNumber() %></th>
+
+<th><input type="hidden" name="emailId" value="<%=obj.getEmailId()%>"><a href="UpdateName.jsp?editName<%=obj.getEmailId() %>>"><button style="color:brown;background-color:navajowhite;" type="button">Update</button></a></th>
+<th><a href="http://localhost:8080/ServletDemo/Delete.jsp"><button style="color:brown;background-color:navajowhite;" type="button">Delete</button></a></th>
+
 </tr>
 <% 
 }
  %>
- </table>
+ </table></center>
 </body>
 </html>

@@ -40,14 +40,14 @@ public class FormImpl implements FormDAO{
 	@Override
 	public void updateForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		Scanner sc=new Scanner(System.in);
+//		Scanner sc=new Scanner(System.in);
 		Connection connection=JdbcConnection.getConnection();
 		System.out.println(connection); 
 		String update="UPDATE details Set name=? WHERE emailId=?";
-		System.out.println("Enter emailId:");
-		String emailId=sc.nextLine();
-		System.out.println("Enter name:");
-		String name=sc.nextLine();
+//		System.out.println("Enter emailId:");
+//		String emailId=sc.nextLine();
+//		System.out.println("Enter new name:");
+//		String name=sc.nextLine();
 		PreparedStatement prepareStatement=connection.prepareStatement(update);
 		prepareStatement.setString(1,name);
 		prepareStatement.setString(2,emailId);
@@ -69,12 +69,12 @@ public class FormImpl implements FormDAO{
 		System.out.println("Enter name:");
 		String name=sc.nextLine();
 		PreparedStatement prepareStatement=connection.prepareStatement(delete);
-		prepareStatement.setString(1,name);
+		prepareStatement.setString(1,formDetails1.getName());
 		int rows=prepareStatement.executeUpdate();
 		System.out.println(rows+"Deleted");
 	}
 
-
+   
 
 	@Override
 	public List<FormDetails> readForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException {
@@ -90,23 +90,13 @@ public class FormImpl implements FormDAO{
 //        System.out.println("Id\tName\tEmailId\tPhoneNumber");
         while(rows.next())
         {
-        	FormDetails formdetails=new FormDetails();
-        	formdetails.setId(rows.getInt(1));
-        	formdetails.setName(rows.getString(2));
-        	formdetails.setEmailId(rows.getString(3));
-        	formdetails.setPhoneNumber(rows.getString(4));
-        	list.add(formdetails);
-//        	int id=rows.getInt("id");
-//        	String name=rows.getString("name");
-//        	String emailId=rows.getString("emailId");
-//        	String phoneNumber=rows.getString("phoneNumber");
-//        	formDetails1.setId(id);
-//        	formDetails1.setName(name);
-//    		formDetails1.setEmailId(emailId);
-//    		formDetails1.setPhoneNumber(phoneNumber);
+        	FormDetails formdetails1=new FormDetails();
+        	formdetails1.setId(rows.getInt(1));
+        	formdetails1.setName(rows.getString(2));
+        	formdetails1.setEmailId(rows.getString(3));
+        	formdetails1.setPhoneNumber(rows.getString(4));
+        	list.add(formdetails1);
 
-//        	System.out.println(id+"\t"+name+"\t"+emailId+"\t"+phoneNumber);
-        	//list.add(formDetails1);
         }
         
 		}

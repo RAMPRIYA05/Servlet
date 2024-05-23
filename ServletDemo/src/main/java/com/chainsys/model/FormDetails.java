@@ -12,6 +12,9 @@ public class FormDetails {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public FormDetails(String name) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
