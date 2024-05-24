@@ -29,7 +29,6 @@ for(FormDetails obj:list)
 <th style="background-color:khaki;"><%=obj.getEmailId() %></th>
 
 <th style="background-color:khaki;"><%=obj.getPhoneNumber() %></th>
-
 <th>
 <input type="hidden" name="id" value="<%=obj.getId()%>">
 <a href="UpdateName.jsp?editId=<%=obj.getId() %>">
