@@ -41,18 +41,15 @@ public class FormImpl implements FormDAO{
 	@Override
 	public void updateForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-//		Scanner sc=new Scanner(System.in);
 		Connection connection=JdbcConnection.getConnection();
 		System.out.println(connection); 
-		String update="UPDATE details Set name=? WHERE emailId=?";
-//		System.out.println("Enter emailId:");
-//		String emailId=sc.nextLine();
-//		System.out.println("Enter new name:");
-//		String name=sc.nextLine();
+		String update="UPDATE details SET name=?,emailId=?,phoneNumber=? WHERE id=?";
 		PreparedStatement prepareStatement=connection.prepareStatement(update);
-		prepareStatement.setString(1,name);
-		prepareStatement.setString(2,emailId);
 		
+		prepareStatement.setString(1,formDetails1.getName());
+		prepareStatement.setString(2,formDetails1.getEmailId());
+		prepareStatement.setString(3,formDetails1.getPhoneNumber());
+		prepareStatement.setInt(4,formDetails1.getId());
 		int rows=prepareStatement.executeUpdate();
 		System.out.println(rows+"Updated");
 		
@@ -63,17 +60,15 @@ public class FormImpl implements FormDAO{
 	@Override
 	public void deleteForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		Scanner sc=new Scanner(System.in);
+		
 		Connection connection=JdbcConnection.getConnection();
 		System.out.println(connection); 
 		String delete="DELETE from details where name=?";
-//		System.out.println("Enter name:");
-//		String name=sc.nextLine();
+
 		PreparedStatement prepareStatement=connection.prepareStatement(delete);
 		prepareStatement.setString(1,formDetails1.getName());
 		int rows=prepareStatement.executeUpdate();
 		System.out.println(rows+"Deleted");
-		
 		
 	}
 
@@ -83,14 +78,13 @@ public class FormImpl implements FormDAO{
 	public List<FormDetails> readForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		try {
-		//List<FormDetails> list=new ArrayList<>();
+	
 		Connection connection = JdbcConnection.getConnection();
   	    System.out.println(connection);
-  	    //Statement statement= connection.createStatement();
   	    String read="SELECT * FROM details";
   	    PreparedStatement prepareStatement = connection.prepareStatement(read);
         ResultSet rows = prepareStatement.executeQuery(read);
-//        System.out.println("Id\tName\tEmailId\tPhoneNumber");
+
         while(rows.next())
         {
         	FormDetails formdetails1=new FormDetails();

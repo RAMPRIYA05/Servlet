@@ -30,7 +30,7 @@ public class Form extends HttpServlet {
 	public static Form form1=new Form();
 	//public List list;
      FormImpl formImpl1=new FormImpl();
-	
+     FormDetails formDetails1=new FormDetails();
 	
        
     /**
@@ -66,12 +66,13 @@ public class Form extends HttpServlet {
 		System.out.println("get");
 		try {
 		 formImpl1.saveForm(formDetails1); 
+		 
 		}
 		catch (ClassNotFoundException | SQLException e) {
 	           // TODO Auto-generated catch block
 	           e.printStackTrace();
 	       }
-		//retrive(request, response);
+		retrive(request,response);
 	}
 
 	/**
@@ -79,95 +80,59 @@ public class Form extends HttpServlet {
 	 */
 	
 	
-//	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		FormDetails formDetails1=new FormDetails();
-//		
-//		try {
-//			list=formImpl1.readForm(formDetails1);	
-//			request.setAttribute("list", list);
-//	        RequestDispatcher dispatcher = request.getRequestDispatcher("FormTable.jsp");
-//	        dispatcher.forward(request, response);
-//			 
-//		}
-//		catch (ClassNotFoundException | SQLException e) {
-//	          
-//	           e.printStackTrace();
-//	       }
-//		//option(request, response);
-//		form1.update(request, response);
-//	}
-//	protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		FormDetails formDetails1=new FormDetails();
-//		PrintWriter writer=response.getWriter();
-//	    String name=request.getParameter("Name");
-//	    formDetails1.setName(name);
-//	    try {
-//	    	formImpl1.deleteForm(formDetails1);
-//	    	//PrintWriter writer=response.getWriter();
-//	    	writer.println(formDetails1.getName());
-//	    }
-//	    catch(ClassNotFoundException | SQLException e){
-//	    	e.printStackTrace();
-//	    }
-//	    
-//	}
-//	protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		FormDetails formDetails1=new FormDetails();
-//		PrintWriter writer=response.getWriter();
-//	    String name=request.getParameter("Name");
-//	    formDetails1.setName(name);
-//	    String emailId=request.getParameter("EmailId");
-//	    formDetails1.setEmailId(emailId);
-//	    try {
-//	    	formImpl1.updateForm(formDetails1);
-//	    	//PrintWriter writer=response.getWriter();
-//	    	writer.println(formDetails1.getName());
-//	    	writer.println(formDetails1.getEmailId());
-//	    }
-//	    catch(ClassNotFoundException | SQLException e){
-//	    	e.printStackTrace();
-//	    }
-//	}
+	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		FormDetails formDetails1=new FormDetails();
+		
+		try {
+			list=formImpl1.readForm(formDetails1);	
+			request.setAttribute("list", list);
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("FormTable.jsp");
+	        dispatcher.forward(request, response);
+			 
+		}
+		catch (ClassNotFoundException | SQLException e) {
+	          
+	           e.printStackTrace();
+	       }
 	
-//	protected void option(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		FormDetails formDetails1=new FormDetails();
-//		@SuppressWarnings("resource")
-//		Scanner sc=new Scanner(System.in);
-//		System.out.println("1.Delete\n 2.Update\n 3.Exit");
-//		int type=sc.nextInt();
-//		
-//		switch(type)
-//		{
-//			case 1:
-//			form1.delete(request, response);
-//			//formImpl1.deleteForm(formDetails1);
-//			break;
-//			case 2:
-//			try {
-//				formImpl1.updateForm(formDetails1);
-//			} catch (ClassNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			break;
-//			case 3:
-//				System.out.println("Exit");
-//				break;
-//		}
-//		
-//	}
-//	
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+		String delete = request.getParameter("delete");
+        if(delete != null && delete.equals("Delete"))
+        {
+        	String name=request.getParameter("deletename");
+        	formDetails1.setName(name);
+           
+            try 
+            {
+            	
+            	formImpl1.deleteForm(formDetails1);
+                System.out.println("Row deleted");
+            } 
+            catch (ClassNotFoundException | SQLException e) 
+            {
+                e.printStackTrace();
+            }
+            try 
+            {
+            	list=formImpl1.readForm(formDetails1);
+                System.out.println("Displayed successfully..");
+            } 
+            catch (ClassNotFoundException | SQLException e)
+            {
+                e.printStackTrace();
+            }
+            request.setAttribute("list", list);
+            request.getRequestDispatcher("FormTable.jsp").forward(request, response);
+        }
+       
+	}
+
 	}
 	
 	
 
-}
+

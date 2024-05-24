@@ -29,10 +29,21 @@ for(FormDetails obj:list)
 <th style="background-color:khaki;"><%=obj.getEmailId() %></th>
 
 <th style="background-color:khaki;"><%=obj.getPhoneNumber() %></th>
-<th><a href=""><button>Delete</button></a></th>
-<th><a href=""><button>Update</button></a></th>
-<th><input type="hidden" name="emailId" value="<%=obj.getEmailId()%>"><a href="UpdateName.jsp?editName<%=obj.getEmailId() %>>"><button style="color:brown;background-color:navajowhite;" type="button">Update</button></a></th>
-<th><a href="http://localhost:8080/ServletDemo/Delete.jsp"><button style="color:brown;background-color:navajowhite;" type="button">Delete</button></a></th>
+
+<th>
+<input type="hidden" name="id" value="<%=obj.getId()%>">
+<a href="UpdateName.jsp?editId=<%=obj.getId() %>">
+<button style="color:brown;background-color:navajowhite;" type="button">Update</button></a>
+</th>
+
+<!-- <th><a href="http://localhost:8080/ServletDemo/Delete.jsp"><button style="color:brown;background-color:navajowhite;" type="button">Delete</button></a></th> -->
+
+<th>
+<form action="Form" method="get">
+  <input type="hidden" name="deletename" value="<%=obj.getName()%>">
+  <input type="submit" style="color:brown;background-color:navajowhite;" name="delete" value="Delete">
+</form>
+</th>
 
 </tr>
 <% 
