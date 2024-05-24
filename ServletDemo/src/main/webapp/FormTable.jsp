@@ -9,8 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<tr>
+<form action="Search.jsp">
+<td><button name="Search" type="button">Search</button></td>
+</form>
+</tr>
+
 <center><table border="1">
 <thead>
+
 <tr>
 <td style="background-color:sienna;">Id</td>
 <td style="background-color:sienna;">Name</td>
@@ -19,6 +26,7 @@
 <td style="background-color:sienna;">Update</td>
 <td style="background-color:sienna;">Delete</td>
 </tr>
+
 <% ArrayList<FormDetails> list=(ArrayList<FormDetails>)request.getAttribute("list");
 for(FormDetails obj:list)
 {
@@ -49,5 +57,6 @@ for(FormDetails obj:list)
 }
  %>
  </table></center>
+ 
 </body>
 </html>

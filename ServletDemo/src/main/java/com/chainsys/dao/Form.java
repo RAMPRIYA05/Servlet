@@ -31,7 +31,6 @@ public class Form extends HttpServlet {
 	//public List list;
      FormImpl formImpl1=new FormImpl();
      FormDetails formDetails1=new FormDetails();
-	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -62,7 +61,6 @@ public class Form extends HttpServlet {
 		formDetails1.setName(name);
 		formDetails1.setEmailId(emailId);
 		formDetails1.setPhoneNumber(phoneNumber);
-		
 		System.out.println("get");
 		try {
 		 formImpl1.saveForm(formDetails1); 

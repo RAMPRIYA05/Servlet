@@ -35,24 +35,8 @@ public class UpdateForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		FormDetails formDetails1=new FormDetails();
-//		String name=request.getParameter("name");
-//		String emailId=request.getParameter("emailId");
-//		String phoneNumber=request.getParameter("phoneNumber");
-//		formDetails1.setName(name);
-//		formDetails1.setEmailId(emailId);
-//		formDetails1.setPhoneNumber(phoneNumber);
-//		try {
-//			 //formImpl1.saveForm(formDetails1);
-//			 formImpl1.updateForm(formDetails1);
-//				 
-//			}
-//			catch (ClassNotFoundException | SQLException e) {
-//		           // TODO Auto-generated catch block
-//		           e.printStackTrace();
-//		       }
+		
+//		response.getWriter().append("Served at: ").append(request.getContextPath());		
 		
 	}
 	/**
