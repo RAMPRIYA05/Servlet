@@ -11,4 +11,5 @@ public interface FormDAO{
 	public List<FormDetails> readForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException;
 	public void updateForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException;
     public void deleteForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException;
+    public List<FormDetails> searchForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException;
 }

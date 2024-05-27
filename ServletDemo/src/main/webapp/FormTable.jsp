@@ -9,12 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<tr>
-<form action="Search.jsp">
-<td><button name="Search" type="button">Search</button></td>
-</form>
-</tr>
-
+<form action="UpdateForm" method="post"> 
+         
+         <center>Search: <input class="details" type="text" placeholder="Enter your Search EmailId" name="emailId" required></center><br>
+ </form>
+<a href="LogOut"><button>LogOut</button></a>
 <center><table border="1">
 <thead>
 
@@ -35,8 +34,8 @@ for(FormDetails obj:list)
 <th style="background-color:khaki;"><%=obj.getId() %></th>
 <th style="background-color:khaki;"><%=obj.getName() %></th>
 <th style="background-color:khaki;"><%=obj.getEmailId() %></th>
-
 <th style="background-color:khaki;"><%=obj.getPhoneNumber() %></th>
+
 <th>
 <input type="hidden" name="id" value="<%=obj.getId()%>">
 <a href="UpdateName.jsp?editId=<%=obj.getId() %>">
@@ -57,6 +56,7 @@ for(FormDetails obj:list)
 }
  %>
  </table></center>
+ 
  
 </body>
 </html>

@@ -29,7 +29,7 @@
 <body>
 <fieldset>
 <form action="Form" method="post">
-     <center> <h1>Register</h1></center>
+     <center> <h1>Add User</h1></center>
       Name: <input class="details" type="text" placeholder="Enter your name" name="name" required><br>
      <br> Phone Number: <input class="details" type="tel" placeholder="Enter your Phone Number" name="phoneNumber" required><br>
       <br>Email Id: <input class="details" type="email" placeholder="Enter your Email Id" name="emailId" required><br>

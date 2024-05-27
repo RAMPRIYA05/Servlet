@@ -4,7 +4,7 @@ public class FormDetails {
 	String name;
 	String phoneNumber;
 	String emailId;
-	int id;
+	String id;
 	public FormDetails() {
 		
 	}
@@ -15,10 +15,10 @@ public class FormDetails {
 	public FormDetails(String name) {
 		// TODO Auto-generated constructor stub
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -44,5 +44,6 @@ public class FormDetails {
 		return "FormDetails [name=" + name + ", phoneNumber=" + phoneNumber + ", emailId=" + emailId + ", id=" + id
 				+ "]";
 	}
+	
 	
 }

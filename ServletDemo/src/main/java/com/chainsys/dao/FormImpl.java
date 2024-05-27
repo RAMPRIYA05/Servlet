@@ -13,7 +13,7 @@ import com.chainsys.model.FormDetails;
 import com.chainsys.util.JdbcConnection;
 
 public class FormImpl implements FormDAO{
-
+	public static String id;
 	public static String name;
 	public static String emailId;
 	public static String phoneNumber;
@@ -28,7 +28,7 @@ public class FormImpl implements FormDAO{
 		System.out.println(connection); 
 		String addForm="insert into details(id,name,emailId,phoneNumber)values(?,?,?,?)";
 		PreparedStatement prepareStatement=connection.prepareStatement(addForm);
-		prepareStatement.setInt(1,formDetails1.getId());
+		prepareStatement.setString(1,formDetails1.getId());
 		prepareStatement.setString(2,formDetails1.getName());
 		prepareStatement.setString(3,formDetails1.getEmailId());
 		prepareStatement.setString(4,formDetails1.getPhoneNumber());
@@ -49,7 +49,7 @@ public class FormImpl implements FormDAO{
 		prepareStatement.setString(1,formDetails1.getName());
 		prepareStatement.setString(2,formDetails1.getEmailId());
 		prepareStatement.setString(3,formDetails1.getPhoneNumber());
-		prepareStatement.setInt(4,formDetails1.getId());
+		prepareStatement.setString(4,formDetails1.getId());
 		int rows=prepareStatement.executeUpdate();
 		System.out.println(rows+"Updated");
 		
@@ -87,7 +87,7 @@ public class FormImpl implements FormDAO{
         while(rows.next())
         {
         	FormDetails formdetails1=new FormDetails();
-        	formdetails1.setId(rows.getInt(1));
+        	formdetails1.setId(rows.getString(1));
         	formdetails1.setName(rows.getString(2));
         	formdetails1.setEmailId(rows.getString(3));
         	formdetails1.setPhoneNumber(rows.getString(4));
@@ -100,6 +100,32 @@ public class FormImpl implements FormDAO{
 			System.out.println(e);
 		}
 		
+		return list;
+	}
+
+
+
+	@Override
+	public List<FormDetails> searchForm(FormDetails formDetails1) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		Connection connection=JdbcConnection.getConnection();
+		String search="SELECT id,name,emailId,phoneNumber FROM details WHERE emailId=?";
+		PreparedStatement prepareStatement = connection.prepareStatement(search);
+		 prepareStatement.setString(1,formDetails1.getEmailId());
+		 ResultSet rows = prepareStatement.executeQuery();
+		 while(rows.next()) 
+		 {
+			 System.out.println("Query");
+
+	        	FormDetails formdetails1=new FormDetails();
+	        	formdetails1.setId(rows.getString(1));
+	        	formdetails1.setName(rows.getString(2));
+	        	formdetails1.setEmailId(rows.getString(3));
+	        	formdetails1.setPhoneNumber(rows.getString(4));
+
+			 list.add(formdetails1);
+		 }
+
 		return list;
 	}	
 	

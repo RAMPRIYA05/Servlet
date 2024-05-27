@@ -35,8 +35,34 @@ public class UpdateForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		FormDetails formDetails1=new FormDetails();
 		
-//		response.getWriter().append("Served at: ").append(request.getContextPath());		
+	    
+		String id=request.getParameter("id");
+		//int id2=Integer.parseInt(id);
+	    formDetails1.setId(id);
+	    
+	    String name=request.getParameter("name");
+	    formDetails1.setName(name);
+	    
+	    String emailId=request.getParameter("emailId");
+		formDetails1.setEmailId(emailId);
+	    System.out.println(emailId);
+	    
+	    String phoneNumber=request.getParameter("phoneNumber");
+	    formDetails1.setPhoneNumber(phoneNumber); 
+		
+	    try {
+	    	list=formImpl1.searchForm(formDetails1);
+	    	
+	    	
+	    }
+	    catch(ClassNotFoundException | SQLException e){
+	    	e.printStackTrace();
+	    }
+	    request.setAttribute("list", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("FormTable.jsp");
+        dispatcher.forward(request, response);
 		
 	}
 	/**
@@ -48,8 +74,8 @@ public class UpdateForm extends HttpServlet {
 		FormDetails formDetails1=new FormDetails();
 		
 		String id=request.getParameter("id");
-		int id1=Integer.parseInt(id);
-	    formDetails1.setId(id1);
+		//int id1=Integer.parseInt(id);
+	    formDetails1.setId(id);
 	    String name=request.getParameter("name");
 	    formDetails1.setName(name);
 	    String emailId=request.getParameter("emailId");

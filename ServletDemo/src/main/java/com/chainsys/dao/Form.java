@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.chainsys.model.FormDetails;
 
@@ -46,12 +47,20 @@ public class Form extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		PrintWriter out=response.getWriter();
+		HttpSession session=request.getSession(false);
+		if(session!=null) {
+			
+		
 		FormDetails formDetails1=new FormDetails();
+		String id=request.getParameter("id");
+		//int id1=Integer.parseInt(id);
 		
 		String name=request.getParameter("name");
 		String emailId=request.getParameter("emailId");
 		String phoneNumber=request.getParameter("phoneNumber");
-		PrintWriter out=response.getWriter();
+		//PrintWriter out=response.getWriter();
 		out.println(name);
 		out.println(emailId);
 		out.println(phoneNumber);
@@ -70,6 +79,12 @@ public class Form extends HttpServlet {
 	           e.printStackTrace();
 	       }
 		retrive(request,response);
+		}
+		else {
+			response.sendRedirect("LogIn.jsp");
+			
+		}
+		out.print("<a href='LogIn.jsp>Back to home</a>");
 	}
 
 	/**
